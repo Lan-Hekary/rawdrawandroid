@@ -1,4 +1,6 @@
-*.keystore
+.vscode/
 makecapk/
-cnfgtest.apk
+*.keystore
+*.apk*
+*.map
 AndroidManifest.xml
