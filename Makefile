@@ -190,5 +190,5 @@ run : push
 	$(ADB) shell am start -n $(PACKAGENAME)/$(ACTIVITYNAME)
 
 clean :
-	rm -rf temp.apk makecapk.apk makecapk $(APKFILE)
+	rm -rf temp.apk makecapk.apk makecapk $(APKFILE) $(APKFILE).idsig output.map
 
