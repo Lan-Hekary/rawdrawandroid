@@ -188,6 +188,10 @@ push : makecapk.apk
 run : push
 	$(eval ACTIVITYNAME:=$(shell $(AAPT) dump badging $(APKFILE) | grep "launchable-activity" | cut -f 2 -d"'"))
 	$(ADB) shell am start -n $(PACKAGENAME)/$(ACTIVITYNAME)
+	$(ADB) shell ps | grep $(PACKAGENAME) | awk '{ print "APK started with PID " $$2 }'
+
+log :
+	$(ADB) shell ps | grep $(PACKAGENAME) | awk '{ print $$2 }' | xargs $(ADB) logcat --pid
 
 clean :
 	rm -rf temp.apk makecapk.apk makecapk $(APKFILE) $(APKFILE).idsig output.map
